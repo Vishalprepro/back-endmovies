@@ -44,6 +44,14 @@ public interface movierepo extends JpaRepository<movieapp, Long> {
     @Query("SELECT AVG(m.rating) FROM movieapp m")
     float findAverageRating();
 
+    @Query("from movieapp")
+    List<movieapp> findAllMovies();
+
+    @Modifying
+    @Transactional
+    @Query("Update movieapp m set m.name=:name where m.id=:id")
+    void updateMovie(@Param("name") String name, @Param("id") Long id);
+
     @Query("select m from movieapp m where m.rating >2.0  AND m.rating <= :avgrating")
     List<movieapp> findmoviesByRating(@Param("avgrating") float avgrating);
 

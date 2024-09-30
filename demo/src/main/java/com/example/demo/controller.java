@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 
@@ -39,9 +41,19 @@ public class controller {
         return ms.getPopularMovies();
     }
 
+    @GetMapping("/allmovies1")
+    public List<movieapp> getallmovies432() {
+        return ms.getallmovies123();
+    }
+
     @PostMapping("/byname/{entity}")
     public List<movieapp> postMethodName(@PathVariable String entity) {
         return ms.getnames(entity.toLowerCase());
+    }
+
+    @PutMapping("/movies/{id}/{newTitle}")
+    public void updateMovieName(@PathVariable Long id, @PathVariable String newTitle) {
+        ms.updateMovieName(id, newTitle); // Update movie title
     }
 
     @PostMapping("/delete/{name}")

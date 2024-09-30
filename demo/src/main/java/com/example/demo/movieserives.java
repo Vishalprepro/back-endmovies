@@ -53,9 +53,17 @@ public class movieserives {
 
     }
 
+    public List<movieapp> getallmovies123() {
+        return Movierepositorys.findAllMovies();
+    }
+
     public List<movieapp> getpast() {
         LocalDate id = LocalDate.now();
         return Movierepositorys.past(id);
+    }
+
+    public void updateMovieName(Long id, String newTitle) {
+        Movierepositorys.updateMovie(newTitle, id); // Call the update method
     }
 
     public List<movieapp> getmoviesupcoming() {
