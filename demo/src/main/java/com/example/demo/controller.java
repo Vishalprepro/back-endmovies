@@ -31,10 +31,12 @@ public class controller {
         return ms.savebulk(entity);
     }
 
-    @GetMapping("/{genre1}")
+    @GetMapping("/api/{genre1}")
     public List<movieapp> getMoviesByGenre(@PathVariable String genre1) throws Exception {
         return ms.getMoviesByGenre(genre1);
     }
+
+    // mvn spring-boot:run
 
     @GetMapping("/popular")
     public List<movieapp> PopularMovies() {
